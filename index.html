@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Food Ordering System</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f8f9fa;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    h1 {
+      margin-top: 40px;
+      color: #343a40;
+    }
+    form {
+      background-color: #fff;
+      padding: 30px 40px;
+      margin-top: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      width: 90%;
+      max-width: 400px;
+    }
+    label {
+      display: block;
+      margin: 15px 0 5px;
+      font-weight: bold;
+    }
+    input, select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ced4da;
+      border-radius: 8px;
+      box-sizing: border-box;
+    }
+    input[type="submit"] {
+      background-color: #28a745;
+      color: white;
+      font-weight: bold;
+      border: none;
+      margin-top: 20px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    input[type="submit"]:hover {
+      background-color: #218838;
+    }
+    .message {
+      margin-top: 20px;
+      color: green;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🍽️ Online Food Ordering</h1>
+
+  <form action="order.php" method="post" onsubmit="return showMessage()">
+    <label for="name">Your Name:</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="food">Select Food:</label>
+    <select id="food" name="food" required>
+      <option value="">-- Choose --</option>
+      <option value="Pizza">Pizza</option>
+      <option value="Burger">Burger</option>
+      <option value="Pasta">Pasta</option>
+      <option value="Fries">Fries</option>
+    </select>
+
+    <label for="qty">Quantity:</label>
+    <input type="number" id="qty" name="qty" min="1" value="1" required>
+
+    <input type="submit" value="Place Order">
+    <p id="success" class="message" style="display:none;">Order submitted! 👍</p>
+  </form>
+
+  <script>
+    function showMessage() {
+      const msg = document.getElementById("success");
+      msg.style.display = "block";
+      setTimeout(() => {
+        msg.style.display = "none";
+      }, 3000);
+      return true; // let form submit
+    }
+  </script>
+
+</body>
+</html>
